@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenpaiZone: Anime API Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SenpaiZone</h1>
+        <p>Anime API Viewer</p>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search anime...">
+            <button id="searchBtn">Search</button><br><br>
+            <button id="allAnime" onclick="getAllAnimeData()">Get Some Anime</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Loading...
+        </div>
+
+    <div id="results" class="results" style="align-items: center;"></div>
+            
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
