@@ -1,73 +1,102 @@
+/* resetting default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background-color: #1a252f;
+    color: white;
     padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    font-size: 14px;
+    color: #bdc3c7;
+    margin-top: 5px;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-.search-box {
+/* filter area */
+.controls {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
-    justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
-input {
-    padding: 10px 15px;
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+input[type="text"], select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: 16px;
 }
 
 button {
-    padding: 10px 25px;
-    background-color: #007bff;
+    background-color: #2980b9;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #3498db;
 }
 
-.loading {
-    text-align: center;
-    font-size: 20px;
-    color: #666;
-    padding: 40px;
-}
-
-.results {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.main-content {
+    display: flex;
     gap: 20px;
 }
 
-.card {
+.left-panel {
+    flex: 3;
+}
+
+.right-panel {
+    flex: 1;
     background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    align-self: flex-start;
+}
+
+/* grid for cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* anime card style */
+.card {
+    background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
 
@@ -77,49 +106,220 @@ button:hover {
 
 .card img {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
 }
 
-.card-content {
-    padding: 15px;
+.card-info {
+    padding: 10px;
 }
 
-.card-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    word-wrap: break-word;
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-.card-rating {
+.card p {
+    font-size: 14px;
     color: #666;
+    margin-bottom: 10px;
+}
+
+.add-btn {
+    width: 100%;
+    background-color: #2ecc71;
+    padding: 8px;
+    margin-top: 5px;
     font-size: 14px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .search-box {
-        flex-direction: column;
-    }
-
-    input {
-        width: 100%;
-    }
-
-    .results {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+.add-btn:hover {
+    background-color: #27ae60;
 }
 
-/* Small Mobile */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 24px;
-    }
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 5px;
+}
 
-    .results {
-        grid-template-columns: 1fr;
-    }
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.watch-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.watch-item h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.activity-box {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.activity-box ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.activity-box li {
+    background-color: #f9f9f9;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.activity-box li:hover {
+    background-color: #ececec;
+}
+#themeToggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+/* DARK MODE */
+.dark {
+    background-color: #121212;
+    color: white;
+}
+
+.dark .container {
+    background-color: #121212;
+}
+
+.dark .card {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+.dark input,
+.dark select {
+    background-color: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark button {
+    background-color: #333;
+    color: white;
+}
+
+.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* header */
+.dark header {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* container */
+.dark .container {
+    background-color: #121212;
+}
+
+/* controls (filter box) */
+.dark .controls {
+    background-color: #1e1e1e;
+    box-shadow: none;
+}
+
+/* RIGHT PANEL */
+.dark .right-panel {
+    background-color: #1e1e1e;
+}
+
+/* TEXT FIX (important) */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark p,
+.dark li {
+    color: #ffffff;
+}
+
+/* cards */
+.dark .card {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+/* card text */
+.dark .card p {
+    color: #cccccc;
+}
+
+/* inputs */
+.dark input,
+.dark select {
+    background-color: #222;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+/* buttons */
+.dark button {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* activity box */
+.dark .activity-box li {
+    background-color: #2a2a2a;
+}
+
+.dark .activity-box li:hover {
+    background-color: #333;
+}
+
+/* watchlist */
+.dark .watch-item {
+    border-bottom: 1px solid #444;
+}
+
+/* TOGGLE BUTTON FIX */
+#themeToggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+/* make toggle visible in dark */
+.dark #themeToggle {
+    background-color: white;
+    color: black;
+}
+
+/* smooth transition (nice touch) */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

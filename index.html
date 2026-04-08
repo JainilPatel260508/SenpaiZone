@@ -3,26 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SenpaiZone: Anime API Viewer</title>
+    <title>SenpaiZone: Smart Anime Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>SenpaiZone</h1>
-        <p>Anime API Viewer</p>
-        
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search anime...">
-            <button id="searchBtn">Search</button><br><br>
-            <button id="allAnime" onclick="getAllAnimeData()">Get Some Anime</button>
+        <p>Smart Anime Dashboard</p>
+        <button id="themeToggle" onclick="toggleMode()" style="cursor: pointer;">🌙</button>
+    </header>
+
+    <div class="container">
+        <!-- Search and filters section -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search anime by name...">
+            <button onclick="searchAnime()">Search</button>
+
+            <select id="genreFilter" onchange="filterAndSort()">
+                <option value="all">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Romance">Romance</option>
+            </select>
+
+            <select id="statusFilter" onchange="filterAndSort()">
+                <option value="all">All Status</option>
+                <option value="Currently Airing">Airing</option>
+                <option value="Finished Airing">Completed</option>
+            </select>
+
+            <select id="sortSelect" onchange="filterAndSort()">
+                <option value="default">Sort by rating</option>
+                <option value="high">Score: High to Low</option>
+                <option value="low">Score: Low to High</option>
+            </select>
         </div>
 
-        <div id="loading" class="loading" style="display: none;">
-            Loading...
-        </div>
+        <div class="main-content">
+            <!-- Left side for anime cards -->
+            <div class="left-panel">
+                <h2>Suggested For You</h2>
+                <p id="suggestedText">Search something to get suggestions!</p>
+                <div id="suggestedResults" class="grid"></div>
 
-    <div id="results" class="results" style="align-items: center;"></div>
-            
+                <hr style="margin: 20px 0; border: 1px solid #ddd;">
+
+                <h2>Anime Results</h2>
+                <div id="animeResults" class="grid">
+                    <p>No results yet. Please search for an anime.</p>
+                </div>
+            </div>
+
+            <!-- Right side for history and watchlist -->
+            <div class="right-panel">
+                <h2>My Watchlist</h2>
+                <div id="watchlistContainer">
+                    <p>Watchlist is empty. Add some anime!</p>
+                </div>
+
+                <div class="activity-box">
+                    <h3>Recent Searches</h3>
+                    <ul id="historyList">
+                        <li>No recent searches</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
